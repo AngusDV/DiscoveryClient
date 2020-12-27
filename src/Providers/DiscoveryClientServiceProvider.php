@@ -30,26 +30,24 @@ class DiscoveryClientServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(PresenceResponse::class, function () {
-            $a=config('client.response_model');
-            $responseClass = new $a;
-            throw_unless($responseClass instanceof PresenceResponse,new \Exception("given presence response is incompatible with contract"));
-            return  $responseClass;
+            $className = config('client.response_model');
+            $class = new $className();
+            throw_unless($class instanceof PresenceResponse, new \Exception("given presence response is incompatible with contract"));
+            return $class;
         });
 
         $this->app->bind(ServiceDiscoverer::class, function () {
-            $a =  config('client.discoverer_model');
-            $discovererClass = new $a;
-
-            throw_unless($discovererClass instanceof ServiceDiscoverer,new \Exception("given service discoverer is incompatible with contract"));
-            return $discovererClass;
+            $className = config('client.discoverer_model');
+            $class = new $className();
+            throw_unless($class instanceof ServiceDiscoverer, new \Exception("given service discoverer is incompatible with contract"));
+            return $class;
         });
 
         $this->app->bind(ServiceResponse::class, function () {
-            $a =  config('client.service_response_model');
-            $discovererClass = new $a;
-
-            throw_unless($discovererClass instanceof ServiceResponse,new \Exception("given service discoverer is incompatible with contract"));
-            return $discovererClass;
+            $className = config('client.service_response_model');
+            $class = new $className();
+            throw_unless($class instanceof ServiceResponse, new \Exception("given service discoverer is incompatible with contract"));
+            return $class;
         });
     }
 

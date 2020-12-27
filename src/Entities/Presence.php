@@ -3,7 +3,6 @@
 namespace AngusDV\DiscoveryClient\Entities;
 
 
-use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 
