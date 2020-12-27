@@ -1,6 +1,10 @@
 <?php
 namespace AngusDV\DiscoveryClient\Facades;
 
+/**
+ * @method static \AngusDV\DiscoveryClient\Contracts\ServiceResponse discover()
+ * @see  \AngusDV\DiscoveryClient\Contracts\ServiceDiscoverer
+ */
 
 class ServiceDiscoverer extends  \Illuminate\Support\Facades\Facade
 {

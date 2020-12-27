@@ -1,6 +1,11 @@
 <?php
 namespace AngusDV\DiscoveryClient\Facades;
 
+/**
+ * @method static \AngusDV\DiscoveryClient\Contracts\ServiceResponse loadFromJson()
+ * @method static \Illuminate\Support\Collection getServices()
+ * @see  \AngusDV\DiscoveryClient\Contracts\ServiceResponse
+ */
 
 class ServiceResponse extends  \Illuminate\Support\Facades\Facade
 {
