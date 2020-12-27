@@ -1,5 +1,5 @@
 {
-    "name": "masihjay-z/discoveryclient",
+    "name": "AngusDV/DiscoveryClient",
     "description": "register application in service discovery",
     "authors": [
         {
@@ -17,7 +17,7 @@
     },"extra": {
         "laravel": {
           "providers": [
-            "Masihjayz\\DiscoveryClient\\Providers\\DiscoveryClientServiceProvider"
+            "AngusDV\\DiscoveryClient\\Providers\\DiscoveryClientServiceProvider"
           ]
         }
     }
