@@ -1,0 +1,24 @@
+{
+    "name": "masihjay-z/discoveryclient",
+    "description": "register application in service discovery",
+    "authors": [
+        {
+            "name": "Masih Jazayeri",
+            "email": "masih1376@gmail.com"
+        },
+        {
+            "name": "Hassan Mousavi",
+            "email": "hsmsender1370@gmail.com"
+        }
+    ],
+    "require": {
+        "illuminate/cache": "^8.20",
+        "illuminate/support": "^8.20"
+    },"extra": {
+        "laravel": {
+          "providers": [
+            "Masihjayz\\DiscoveryClient\\Providers\\DiscoveryClientServiceProvider"
+          ]
+        }
+    }
+}
