@@ -1,7 +1,7 @@
 <?php
 
 
-namespace DiscoveryClient\Entities;
+namespace AngusDV\DiscoveryClient\Entities;
 
 
 use Illuminate\Support\Facades\Cache;
@@ -19,7 +19,7 @@ class ServiceRepository
     public function getServices()
     {
         return Cache::get($this->getServicesCacheKey(), function () {
-            $this->setServices(\DiscoveryClient\Facades\ServiceDiscoverer::discover()->getServices());
+            $this->setServices(\AngusDV\DiscoveryClient\Facades\ServiceDiscoverer::discover()->getServices());
             return $this->getServices();
         });
     }

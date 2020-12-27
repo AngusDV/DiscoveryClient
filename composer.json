@@ -1,24 +1,30 @@
 {
-    "name": "angus-dv/discovery-client",
-    "description": "register application in service discovery",
-    "authors": [
-        {
-            "name": "Masih Jazayeri",
-            "email": "masih1376@gmail.com"
-        },
-        {
-            "name": "Hassan Mousavi",
-            "email": "hsmsender1370@gmail.com"
-        }
-    ],
-    "require": {
-        "illuminate/cache": "^8.20",
-        "illuminate/support": "^8.20"
-    },"extra": {
-        "laravel": {
-          "providers": [
-            "AngusDV\\DiscoveryClient\\Providers\\DiscoveryClientServiceProvider"
-          ]
-        }
+  "name": "angus-dv/discovery-client",
+  "description": "register application in service discovery",
+  "authors": [
+    {
+      "name": "Masih Jazayeri",
+      "email": "masih1376@gmail.com"
+    },
+    {
+      "name": "Hassan Mousavi",
+      "email": "hsmsender1370@gmail.com"
     }
+  ],
+  "require": {
+    "illuminate/cache": "^8.20",
+    "illuminate/support": "^8.20"
+  },
+  "autoload": {
+    "psr-4": {
+      "AngusDV\\DiscoveryClient\\": "src"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "AngusDV\\DiscoveryClient\\Providers\\DiscoveryClientServiceProvider"
+      ]
+    }
+  }
 }

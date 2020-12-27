@@ -1,5 +1,5 @@
 <?php
-namespace DiscoveryClient\Facades;
+namespace AngusDV\DiscoveryClient\Facades;
 
 
 class PresenceResponse extends  \Illuminate\Support\Facades\Facade
@@ -11,6 +11,6 @@ class PresenceResponse extends  \Illuminate\Support\Facades\Facade
      */
     protected static function getFacadeAccessor()
     {
-        return \DiscoveryClient\Contracts\PresenceResponse::class;
+        return \AngusDV\DiscoveryClient\Contracts\PresenceResponse::class;
     }
 }

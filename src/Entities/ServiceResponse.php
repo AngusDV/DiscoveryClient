@@ -1,12 +1,12 @@
 <?php
 
 
-namespace DiscoveryClient\Entities;
+namespace AngusDV\DiscoveryClient\Entities;
 
 
 use Illuminate\Support\Collection;
 
-class ServiceResponse implements \DiscoveryClient\Contracts\ServiceResponse
+class ServiceResponse implements \AngusDV\DiscoveryClient\Contracts\ServiceResponse
 {
 
     public Collection $services;

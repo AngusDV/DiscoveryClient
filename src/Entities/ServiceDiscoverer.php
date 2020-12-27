@@ -1,9 +1,9 @@
 <?php
 
 
-namespace DiscoveryClient\Entities;
+namespace AngusDV\DiscoveryClient\Entities;
 
-use DiscoveryClient\Contracts\ServiceDiscoverer as Discoverer;
+use AngusDV\DiscoveryClient\Contracts\ServiceDiscoverer as Discoverer;
 use Illuminate\Support\Facades\Http;
 
 class ServiceDiscoverer implements Discoverer

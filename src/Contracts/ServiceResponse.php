@@ -1,11 +1,11 @@
 <?php
 
 
-namespace DiscoveryClient\Contracts;
+namespace AngusDV\DiscoveryClient\Contracts;
 
 
 
-use DiscoveryClient\Entities\Service;
+use AngusDV\DiscoveryClient\Entities\Service;
 use Illuminate\Support\Collection;
 
 interface ServiceResponse

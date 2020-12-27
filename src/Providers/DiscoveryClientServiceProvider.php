@@ -1,10 +1,10 @@
 <?php
 
-namespace DiscoveryClient\Providers;
+namespace AngusDV\DiscoveryClient\Providers;
 
-use DiscoveryClient\Contracts\ServiceDiscoverer;
-use DiscoveryClient\Contracts\PresenceResponse;
-use DiscoveryClient\Contracts\ServiceResponse;
+use AngusDV\DiscoveryClient\Contracts\ServiceDiscoverer;
+use AngusDV\DiscoveryClient\Contracts\PresenceResponse;
+use AngusDV\DiscoveryClient\Contracts\ServiceResponse;
 use Illuminate\Support\ServiceProvider;
 
 class DiscoveryClientServiceProvider extends ServiceProvider

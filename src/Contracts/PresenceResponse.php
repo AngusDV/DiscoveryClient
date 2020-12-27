@@ -1,7 +1,7 @@
 <?php
 
 
-namespace DiscoveryClient\Contracts;
+namespace AngusDV\DiscoveryClient\Contracts;
 
 
 interface PresenceResponse

@@ -6,6 +6,6 @@ return [
     'SERVICE_PORT'=> env('SERVICE_PORT'),
     'SERVICE_TTL'=> env('SERVICE_TTL'),
     'SERVICE_CACHE_KEY'=> env('SERVICE_CACHE_KEY'),
-    'response_model'=> \DiscoveryClient\Entities\PresencePresenceResponse::class,
-    'discoverer_model'=> \DiscoveryClient\Entities\ServiceDiscoverer::class,
+    'response_model'=> \AngusDV\DiscoveryClient\Entities\PresencePresenceResponse::class,
+    'discoverer_model'=> \AngusDV\DiscoveryClient\Entities\ServiceDiscoverer::class,
 ];

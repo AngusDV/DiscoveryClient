@@ -1,7 +1,7 @@
 <?php
 
 
-namespace DiscoveryClient\Entities;
+namespace AngusDV\DiscoveryClient\Entities;
 
 
 class Service

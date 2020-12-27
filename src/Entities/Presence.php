@@ -1,12 +1,12 @@
 <?php
 
-namespace DiscoveryClient\Entities;
+namespace AngusDV\DiscoveryClient\Entities;
 
 
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
-use DiscoveryClient\Contracts\PresenceResponse;
+use AngusDV\DiscoveryClient\Contracts\PresenceResponse;
 
 class Presence
 {

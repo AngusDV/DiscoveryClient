@@ -1,10 +1,10 @@
 <?php
 
 
-namespace DiscoveryClient\Entities;
+namespace AngusDV\DiscoveryClient\Entities;
 
 
-use DiscoveryClient\Contracts\PresenceResponse;
+use AngusDV\DiscoveryClient\Contracts\PresenceResponse;
 
 class PresencePresenceResponse implements PresenceResponse
 {
