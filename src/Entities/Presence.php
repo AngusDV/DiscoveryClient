@@ -6,7 +6,6 @@ namespace AngusDV\DiscoveryClient\Entities;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
-use AngusDV\DiscoveryClient\Contracts\PresenceResponse;
 
 class Presence
 {
@@ -16,7 +15,7 @@ class Presence
 
     public function getTTL()
     {
-        return Cache::get(TTL_KEY, config('SERVICE_TTL'));
+        return Cache::get(static::TTL_KEY, config('client.SERVICE_TTL'));
     }
 
     public function setTTL($value)
@@ -25,22 +24,23 @@ class Presence
         return $value;
     }
 
-    public function build():PresenceResponse
+    public function build():\AngusDV\DiscoveryClient\Contracts\PresenceResponse
     {
-        return  PresencePresenceResponse::loadFromJson(Http::acceptJson()->post(config('DiscoveryClient.SERVICE_DISCOVERY_ADDRESS'), [
-            "name" => config('SERVICE_NAME'),
-            "host" => config('DiscoveryClient.SERVICE_DISCOVERY_ADDRESS'),
-            "port" => config('DiscoveryClient.SERVICE_PORT')
+        return  \AngusDV\DiscoveryClient\Facades\PresenceResponse::loadFromJson(Http::acceptJson()->post(config('client.SERVICE_DISCOVERY_ADDRESS'), [
+            "name" => config('client.SERVICE_NAME'),
+            "host" => config('client.SERVICE_DISCOVERY_ADDRESS'),
+            "port" => config('client.SERVICE_PORT')
         ])->body());
     }
 
     public function presence()
     {
         if ($this->isAlive())
-            return ;
+            return $this->getTTL();
         $ttl = $this->build()->getTTL();
         $this->setTTL($ttl);
         $this->setAlive();
+        return $this->getTTL();
     }
 
     public function forcePresence()

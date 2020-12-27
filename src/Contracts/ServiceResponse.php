@@ -10,7 +10,7 @@ use Illuminate\Support\Collection;
 
 interface ServiceResponse
 {
-    public function loadFromJson(array $data): self;
+    public function loadFromJson($data): self;
 
     public function getServices(): Collection;
 }

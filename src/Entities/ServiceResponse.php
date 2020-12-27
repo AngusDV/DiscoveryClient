@@ -12,7 +12,12 @@ class ServiceResponse implements \AngusDV\DiscoveryClient\Contracts\ServiceRespo
     public Collection $services;
     public array $data;
 
-    public function loadFromJson(array $data): self
+    public function __construct()
+    {
+        $this->services = collect();
+    }
+
+    public function loadFromJson($data): \AngusDV\DiscoveryClient\Contracts\ServiceResponse
     {
         return $this->setData(json_decode($data, true)['data']);
     }

@@ -8,4 +8,5 @@ return [
     'SERVICE_CACHE_KEY'=> env('SERVICE_CACHE_KEY'),
     'response_model'=> \AngusDV\DiscoveryClient\Entities\PresencePresenceResponse::class,
     'discoverer_model'=> \AngusDV\DiscoveryClient\Entities\ServiceDiscoverer::class,
+    'service_response_model'=> \AngusDV\DiscoveryClient\Entities\ServiceResponse::class,
 ];

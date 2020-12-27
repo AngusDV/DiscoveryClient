@@ -4,9 +4,8 @@
 namespace AngusDV\DiscoveryClient\Contracts;
 
 
-use AngusDV\DiscoveryClient\Entities\ServiceResponse;
 
 interface ServiceDiscoverer
 {
-    public function discover(): ServiceResponse;
+    public function discover(): \AngusDV\DiscoveryClient\Contracts\ServiceResponse;
 }

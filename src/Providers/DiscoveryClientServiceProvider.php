@@ -19,7 +19,7 @@ class DiscoveryClientServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__ . '/../config.php' => config_path('client.php'),
-        ], 'client-config');
+        ], 'client');
     }
 
     /**
@@ -30,13 +30,24 @@ class DiscoveryClientServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(PresenceResponse::class, function () {
-            $responseClass = new config('client-config.response_model');
+            $a=config('client.response_model');
+            $responseClass = new $a;
             throw_unless($responseClass instanceof PresenceResponse,new \Exception("given presence response is incompatible with contract"));
             return  $responseClass;
         });
 
         $this->app->bind(ServiceDiscoverer::class, function () {
-            $discovererClass = new config('client-config.discoverer_model');
+            $a =  config('client.discoverer_model');
+            $discovererClass = new $a;
+
+            throw_unless($discovererClass instanceof ServiceDiscoverer,new \Exception("given service discoverer is incompatible with contract"));
+            return $discovererClass;
+        });
+
+        $this->app->bind(ServiceResponse::class, function () {
+            $a =  config('client.service_response_model');
+            $discovererClass = new $a;
+
             throw_unless($discovererClass instanceof ServiceResponse,new \Exception("given service discoverer is incompatible with contract"));
             return $discovererClass;
         });
