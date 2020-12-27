@@ -20,12 +20,12 @@ class Presence
     public function setTTL($value)
     {
         Cache::put(static::TTL_KEY, $value);
-        return $value;
+        return $this;
     }
 
-    public function build():\AngusDV\DiscoveryClient\Contracts\PresenceResponse
+    public function build(): \AngusDV\DiscoveryClient\Contracts\PresenceResponse
     {
-        return  \AngusDV\DiscoveryClient\Facades\PresenceResponse::loadFromJson(Http::acceptJson()->post(config('client.SERVICE_DISCOVERY_ADDRESS'), [
+        return \AngusDV\DiscoveryClient\Facades\PresenceResponse::loadFromJson(Http::acceptJson()->post(config('client.SERVICE_DISCOVERY_ADDRESS'), [
             "name" => config('client.SERVICE_NAME'),
             "host" => config('client.SERVICE_DISCOVERY_ADDRESS'),
             "port" => config('client.SERVICE_PORT')
@@ -34,19 +34,17 @@ class Presence
 
     public function presence()
     {
-        if ($this->isAlive())
-            return $this->getTTL();
-        $ttl = $this->build()->getTTL();
-        $this->setTTL($ttl);
-        $this->setAlive();
-        return $this->getTTL();
+        return $this->isAlive() ?
+            $this->getTTL() :
+            $this->forcePresence();
     }
 
     public function forcePresence()
     {
-        $ttl = $this->build()->getTTL();
-        $this->setTTL($ttl);
-        $this->setAlive();
+        return $this->setTTL(
+            $this->build()
+                ->getTTL()
+        )->setAlive();
     }
 
     public function isAlive()
@@ -56,6 +54,7 @@ class Presence
 
     public function setAlive()
     {
-        Cache::put(static::ALIVE_KEY, true,$this->getTTL());
+        Cache::put(static::ALIVE_KEY, true, $this->getTTL());
+        return $this;
     }
 }
