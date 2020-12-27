@@ -32,12 +32,12 @@ class ServiceRepository
 
     public function forceGetServices()
     {
-        return  $this->forgetServices()->getServices();
+        return $this->forgetServices()->getServices();
     }
 
     protected function getServicesCacheKey()
     {
-        return  "SERVICE_CACHE_KEY";
+        return "SERVICE_CACHE_KEY";
     }
 
 }
