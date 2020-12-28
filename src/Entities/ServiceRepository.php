@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Cache;
 
 class ServiceRepository
 {
-
+    const SERVICE_KEY = "SERVICE_CACHE_KEY";
 
     public function setServices($value)
     {
@@ -28,7 +28,7 @@ class ServiceRepository
 
     public function forgetServices()
     {
-        Cache::forget($this->getServicesCacheKey());
+        Cache::forget(static::SERVICE_KEY);
         return $this;
     }
 
@@ -37,10 +37,6 @@ class ServiceRepository
         return $this->forgetServices()->getServices();
     }
 
-    protected function getServicesCacheKey()
-    {
-        return "SERVICE_CACHE_KEY";
-    }
 
     public function findOrFail($name)
     {
