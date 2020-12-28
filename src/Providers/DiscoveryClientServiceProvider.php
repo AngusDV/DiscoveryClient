@@ -8,6 +8,7 @@ use AngusDV\DiscoveryClient\Contracts\ServiceDiscoverer;
 use AngusDV\DiscoveryClient\Contracts\PresenceResponse;
 use AngusDV\DiscoveryClient\Contracts\ServiceResponse;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Str;
 
 class DiscoveryClientServiceProvider extends ServiceProvider
 {
@@ -19,9 +20,13 @@ class DiscoveryClientServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->publishes([
-            __DIR__ . '/../config.php' => config_path('client.php'),
-        ], 'client');
+        if (Str::contains($this->app->version(), 'Lumen')) {
+            $this->app->configure('client');
+        } else{
+            $this->publishes([
+                __DIR__ . '/../config.php' => config_path('client.php'),
+            ], 'client');
+        }
 
         if ($this->app->runningInConsole()) {
             $this->commands([
