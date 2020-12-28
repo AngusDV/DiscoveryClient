@@ -17,7 +17,7 @@ class Presence
         return Cache::get(static::TTL_KEY, config('client.SERVICE_TTL'));
     }
 
-    public function setTTL($value)
+    public function setTTL($value): self
     {
         Cache::put(static::TTL_KEY, $value);
         return $this;
@@ -32,14 +32,14 @@ class Presence
         ])->body());
     }
 
-    public function presence()
+    public function presence(): self
     {
         $this->isAlive() ?:
             $this->forcePresence();
         return $this;
     }
 
-    public function forcePresence()
+    public function forcePresence(): self
     {
         return $this->setTTL(
             $this->build()
@@ -47,12 +47,12 @@ class Presence
         )->setAlive();
     }
 
-    public function isAlive()
+    public function isAlive(): bool
     {
         return Cache::get(static::ALIVE_KEY, false);
     }
 
-    public function setAlive()
+    public function setAlive(): self
     {
         Cache::put(static::ALIVE_KEY, true, $this->getTTL());
         return $this;

@@ -22,7 +22,7 @@ class ServiceResponse implements \AngusDV\DiscoveryClient\Contracts\ServiceRespo
         return $this->setData(json_decode($data, true)['data']);
     }
 
-    public function setData($data)
+    public function setData($data): self
     {
         $this->data = $data;
         return $this;

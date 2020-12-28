@@ -8,7 +8,7 @@ class PresenceResponse implements \AngusDV\DiscoveryClient\Contracts\PresenceRes
 {
     public $ttl;
 
-    public function loadFromJson($data)
+    public function loadFromJson($data):self
     {
         $this->ttl = json_decode($data, true)['data'];
         return $this;

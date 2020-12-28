@@ -5,6 +5,7 @@ namespace AngusDV\DiscoveryClient\Entities;
 
 
 use AngusDV\DiscoveryClient\Exceptions\ServiceNotAvailable;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 
 
@@ -12,13 +13,13 @@ class ServiceRepository
 {
     const SERVICE_KEY = "SERVICE_CACHE_KEY";
 
-    public function setServices($value)
+    public function setServices($value):self
     {
         Cache::put(static::SERVICE_KEY, $value, (new Presence())->getTTL());
         return $this;
     }
 
-    public function getServices()
+    public function getServices():Collection
     {
         return Cache::get(static::SERVICE_KEY, function () {
             $this->setServices(\AngusDV\DiscoveryClient\Facades\ServiceDiscoverer::discover()->getServices());
@@ -26,19 +27,19 @@ class ServiceRepository
         });
     }
 
-    public function forgetServices()
+    public function forgetServices():self
     {
         Cache::forget(static::SERVICE_KEY);
         return $this;
     }
 
-    public function forceGetServices()
+    public function forceGetServices():Collection
     {
         return $this->forgetServices()->getServices();
     }
 
 
-    public function findOrFail($name)
+    public function findOrFail($name):Service
     {
         $service = $this->getServices()->where('name', $name)->first() ?: $this->forceGetServices()->where('name', $name)->first();
         throw_if(is_null($service), ServiceNotAvailable::class);
