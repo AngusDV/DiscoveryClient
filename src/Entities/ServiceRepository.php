@@ -5,7 +5,7 @@ namespace AngusDV\DiscoveryClient\Entities;
 
 
 use Illuminate\Support\Facades\Cache;
-use mysql_xdevapi\Exception;
+
 
 class ServiceRepository
 {
@@ -44,7 +44,7 @@ class ServiceRepository
     public function findOrFail($name)
     {
         $service= $this->getServices()->where('name',$name)->first() ?: $this->forceGetServices()->where('name',$name)->first();
-        throw_if(is_null($service), new Exception("service is not available"));
+        throw_if(is_null($service), new \Exception("service is not available"));
         return $service;
     }
 
