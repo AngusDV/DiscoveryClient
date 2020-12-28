@@ -22,7 +22,7 @@ class DiscoveryClientServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../config.php' => config_path('client.php'),
         ], 'client');
-        
+
         if ($this->app->runningInConsole()) {
             $this->commands([
                 DiscoverCommand::class,

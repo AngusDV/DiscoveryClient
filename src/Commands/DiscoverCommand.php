@@ -9,8 +9,11 @@ class DiscoverCommand extends Command
 {
     protected $signature = 'client:discover';
     protected $description = 'get all available services';
+
     public function handle()
     {
-        ServiceDiscoverer::discover();
+        $this->comment("start discovering...");
+        $services = ServiceDiscoverer::discover()->getServices()->count();
+        $this->info("$services services discovered.");
     }
 }
