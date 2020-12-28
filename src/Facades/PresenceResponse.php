@@ -1,6 +1,10 @@
 <?php
 namespace AngusDV\DiscoveryClient\Facades;
 
+/**
+ * @method static getTTL()
+ * @see  \AngusDV\DiscoveryClient\Contracts\PresenceResponse
+ */
 
 class PresenceResponse extends  \Illuminate\Support\Facades\Facade
 {
