@@ -34,9 +34,9 @@ class Presence
 
     public function presence()
     {
-        return $this->isAlive() ?
-            $this->getTTL() :
+        $this->isAlive() ?:
             $this->forcePresence();
+        return $this;
     }
 
     public function forcePresence()
