@@ -2,6 +2,8 @@
 
 namespace AngusDV\DiscoveryClient\Providers;
 
+use AngusDV\DiscoveryClient\Commands\DiscoverCommand;
+use AngusDV\DiscoveryClient\Commands\PresenceCommand;
 use AngusDV\DiscoveryClient\Contracts\ServiceDiscoverer;
 use AngusDV\DiscoveryClient\Contracts\PresenceResponse;
 use AngusDV\DiscoveryClient\Contracts\ServiceResponse;
@@ -20,6 +22,13 @@ class DiscoveryClientServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../config.php' => config_path('client.php'),
         ], 'client');
+        
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                DiscoverCommand::class,
+                PresenceCommand::class
+            ]);
+        }
     }
 
     /**
@@ -46,7 +55,7 @@ class DiscoveryClientServiceProvider extends ServiceProvider
         $this->app->bind(ServiceResponse::class, function () {
             $className = config('client.service_response_model');
             $class = new $className();
-            throw_unless($class instanceof ServiceResponse, new \Exception("given service discoverer is incompatible with contract"));
+            throw_unless($class instanceof ServiceResponse, new \Exception("given service response is incompatible with contract"));
             return $class;
         });
     }

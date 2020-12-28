@@ -15,7 +15,8 @@
     "php": "^7.4|^8.0",
     "illuminate/cache": "^8.20",
     "illuminate/support": "^8.20",
-    "ext-json": "*"
+    "ext-json": "*",
+    "illuminate/console": "^8.20"
   },
   "autoload": {
     "psr-4": {
