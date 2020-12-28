@@ -27,7 +27,7 @@ class Presence
     {
         return \AngusDV\DiscoveryClient\Facades\PresenceResponse::loadFromJson(Http::acceptJson()->post(config('client.SERVICE_DISCOVERY_ADDRESS'), [
             "name" => config('client.SERVICE_NAME'),
-            "host" => config('client.SERVICE_DISCOVERY_ADDRESS'),
+            "host" => config('client.SERVICE_HOST'),
             "port" => config('client.SERVICE_PORT')
         ])->body());
     }
