@@ -15,5 +15,11 @@ class DiscoverCommand extends Command
         $this->comment("start discovering...");
         $services = ServiceDiscoverer::discover()->getServices()->count();
         $this->info("$services services discovered.");
+        $services = ServiceDiscoverer::discover()->getServices();
+        $this->table(
+            ['ServiceName', 'Host', 'Port'],
+            $services->all(['name', 'host', 'port'])
+        );
+
     }
 }
