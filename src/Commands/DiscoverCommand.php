@@ -17,8 +17,10 @@ class DiscoverCommand extends Command
         $this->info("$services services discovered.");
         $services = ServiceDiscoverer::discover()->getServices();
         $this->table(
-            ['ServiceName', 'Host', 'Port'],
-            $services->all(['name', 'host', 'port'])
+            ['name', 'host', 'port'],
+            collect($services->map(function ($item, $key) {
+                return (array) $item;
+            }))
         );
 
     }
