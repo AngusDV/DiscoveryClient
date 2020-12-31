@@ -17,9 +17,7 @@ class DiscoverCommand extends Command
         $this->info("{$services->count()} services discovered.");
         $this->table(
             ['Name', 'Host', 'Port'],
-            $services->map(function ($item) {
-                return (array) $item;
-            })
+            $services->toArray()
         );
 
     }
