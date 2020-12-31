@@ -25,6 +25,11 @@ class DiscoveryResponse implements \AngusDV\DiscoveryClient\Contracts\DiscoveryR
         return $this->setData($json['data']);
     }
 
+    public function loadFromArray($data): \AngusDV\DiscoveryClient\Contracts\DiscoveryResponse
+    {
+        return $this->setData($data);
+    }
+
     public function setData($data): self
     {
         $this->data = $data;

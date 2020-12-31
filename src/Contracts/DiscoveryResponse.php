@@ -12,5 +12,7 @@ interface DiscoveryResponse
 {
     public function loadFromJson($data): self;
 
+    public function loadFromArray($data): self;
+
     public function getServices(): Collection;
 }
