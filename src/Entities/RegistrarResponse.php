@@ -18,13 +18,6 @@ class RegistrarResponse implements \AngusDV\DiscoveryClient\Contracts\RegistrarR
         return $this;
     }
 
-    public function loadFromArray($data): self
-    {
-        throw_unless(isset($data['data']), InvalidRegistrationResponse::class);
-        $this->ttl = $data['data'];
-        return $this;
-    }
-
     public function getTTL()
     {
         return $this->ttl;

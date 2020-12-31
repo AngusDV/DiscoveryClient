@@ -8,7 +8,5 @@ interface RegistrarResponse
 {
     public function loadFromJson($data);
 
-    public function loadFromArray($data);
-
     public function getTTL();
 }
