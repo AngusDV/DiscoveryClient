@@ -4,7 +4,9 @@
 namespace AngusDV\DiscoveryClient\Contracts;
 
 
-interface PresenceResponse
+interface Registrar
 {
+    public function register(): self;
+
     public function getTTL();
 }

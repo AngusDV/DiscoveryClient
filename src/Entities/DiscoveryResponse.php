@@ -6,7 +6,7 @@ namespace AngusDV\DiscoveryClient\Entities;
 
 use Illuminate\Support\Collection;
 
-class ServiceResponse implements \AngusDV\DiscoveryClient\Contracts\ServiceResponse
+class DiscoveryResponse implements \AngusDV\DiscoveryClient\Contracts\DiscoveryResponse
 {
 
     public Collection $services;
@@ -17,7 +17,7 @@ class ServiceResponse implements \AngusDV\DiscoveryClient\Contracts\ServiceRespo
         $this->services = collect();
     }
 
-    public function loadFromJson($data): \AngusDV\DiscoveryClient\Contracts\ServiceResponse
+    public function loadFromJson($data): \AngusDV\DiscoveryClient\Contracts\DiscoveryResponse
     {
         return $this->setData(json_decode($data, true)['data']);
     }

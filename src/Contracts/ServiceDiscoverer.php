@@ -7,5 +7,5 @@ namespace AngusDV\DiscoveryClient\Contracts;
 
 interface ServiceDiscoverer
 {
-    public function discover(): \AngusDV\DiscoveryClient\Contracts\ServiceResponse;
+    public function discover(): \AngusDV\DiscoveryClient\Contracts\DiscoveryResponse;
 }
