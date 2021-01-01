@@ -13,7 +13,7 @@ class ServiceDiscoverer implements Discoverer
     {
         return \AngusDV\DiscoveryClient\Facades\Decorator::getDiscovererResponse()
             ->loadFromJson(Http::acceptJson()
-                    ->get(config('client.SERVICE_DISCOVERY_ADDRESS'))
+                    ->get(config('client.service_discovery_address'))
                     ->body()
             );
     }

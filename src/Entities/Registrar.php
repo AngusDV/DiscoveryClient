@@ -25,7 +25,7 @@ class Registrar implements \AngusDV\DiscoveryClient\Contracts\Registrar
 
     public function build(Service $service): \AngusDV\DiscoveryClient\Contracts\RegistrarResponse
     {
-        return \AngusDV\DiscoveryClient\Facades\Decorator::getRegistrarResponse()->loadFromJson(Http::acceptJson()->post($this->getDiscoveryServiceAddress(), [
+        return \AngusDV\DiscoveryClient\Facades\Decorator::getRegistrarResponse()->loadFromJson(Http::acceptJson()->post(config('client.service_discovery_address'), [
             "name" => $service->getName(),
             "host" => $service->getHost(),
             "port" => $service->getPort()
@@ -58,8 +58,4 @@ class Registrar implements \AngusDV\DiscoveryClient\Contracts\Registrar
         return $this;
     }
 
-    public function getDiscoveryServiceAddress()
-    {
-        return config('client.SERVICE_DISCOVERY_ADDRESS');
-    }
 }

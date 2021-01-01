@@ -4,10 +4,8 @@
 namespace AngusDV\DiscoveryClient\Entities;
 
 
-use AngusDV\DiscoveryClient\Contracts\DiscoveryClient;
-use AngusDV\DiscoveryClient\Contracts\ServiceDiscoverer;
 
-class DiscoveryClient implements DiscoveryClient
+class DiscoveryClient implements \AngusDV\DiscoveryClient\Contracts\DiscoveryClient
 {
     public Decorator $decorator;
 
