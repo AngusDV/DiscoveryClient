@@ -4,12 +4,10 @@ namespace AngusDV\DiscoveryClient;
 
 use AngusDV\DiscoveryClient\Commands\DiscoverCommand;
 use AngusDV\DiscoveryClient\Commands\RegisterCommand;
-use AngusDV\DiscoveryClient\Contracts\ServiceDiscoverer;
-use AngusDV\DiscoveryClient\Contracts\RegistrarResponse;
-use AngusDV\DiscoveryClient\Contracts\DiscoveryResponse;
 use AngusDV\DiscoveryClient\Entities\Decorator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
+use AngusDV\DiscoveryClient\Contracts\DiscoveryClient;
 
 class DiscoveryClientServiceProvider extends ServiceProvider
 {
@@ -44,7 +42,7 @@ class DiscoveryClientServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(Decorator::class, $this->createDecorator());
+        $this->app->bind(DiscoveryClient::class, new \AngusDV\DiscoveryClient\Entities\DiscoveryClient($this->createDecorator()));
     }
 
 

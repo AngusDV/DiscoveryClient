@@ -14,7 +14,7 @@ class Registrar implements \AngusDV\DiscoveryClient\Contracts\Registrar
 
     public function getTTL()
     {
-        return Cache::get(static::TTL_KEY, config('client.SERVICE_TTL'));
+        return Cache::get(static::TTL_KEY, config('client.service_ttl'));
     }
 
     public function setTTL($value): self
