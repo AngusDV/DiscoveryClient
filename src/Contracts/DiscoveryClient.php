@@ -5,6 +5,7 @@ namespace AngusDV\DiscoveryClient\Contracts;
 
 
 use AngusDV\DiscoveryClient\Entities\Decorator;
+use Illuminate\Support\Collection;
 
 interface DiscoveryClient
 {
@@ -17,5 +18,5 @@ interface DiscoveryClient
 
     public function forceRegister(): \AngusDV\DiscoveryClient\Contracts\Registrar;
 
-    public function discover(): \AngusDV\DiscoveryClient\Contracts\DiscoveryResponse;
+    public function getServices(): Collection;
 }

@@ -12,6 +12,7 @@ class Decorator
     protected ServiceDiscoverer $serviceDiscoverer;
     protected DiscoveryResponse $discoveryResponse;
     protected RegistrarResponse $registrarResponse;
+    protected ServiceRepository $serviceRepository;
     protected Registrar $registrar;
 
     public function setServiceDiscoverer(ServiceDiscoverer $serviceDiscoverer)
@@ -52,6 +53,16 @@ class Decorator
     public function getRegistrar(): Registrar
     {
         return $this->registrar;
+    }
+
+    public function setServiceRepository(ServiceRepository $repository)
+    {
+        $this->serviceRepository = $repository;
+    }
+
+    public function getServiceRepository(): ServiceRepository
+    {
+        return $this->serviceRepository;
     }
 
 }

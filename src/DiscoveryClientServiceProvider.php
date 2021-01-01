@@ -42,7 +42,9 @@ class DiscoveryClientServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(DiscoveryClient::class, new \AngusDV\DiscoveryClient\Entities\DiscoveryClient($this->createDecorator()));
+        $decorator = $this->createDecorator();
+        $this->app->instance(Decorator::class, $decorator);
+        $this->app->instance(DiscoveryClient::class, new \AngusDV\DiscoveryClient\Entities\DiscoveryClient($this->createDecorator()));
     }
 
 
@@ -58,6 +60,12 @@ class DiscoveryClientServiceProvider extends ServiceProvider
 
         $registrarResponse = config('client.registrar_response_model');
         $decorator->setRegistrarResponse(new $registrarResponse());
+
+        $registrar = config('client.registrar_model');
+        $decorator->setRegistrar(new $registrar());
+
+        $serviceRepository = config('client.service_repository_model');
+        $decorator->setServiceRepository(new $serviceRepository());
 
         return $decorator;
     }

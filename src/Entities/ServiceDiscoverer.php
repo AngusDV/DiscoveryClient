@@ -11,7 +11,7 @@ class ServiceDiscoverer implements Discoverer
 {
     public function discover(): \AngusDV\DiscoveryClient\Contracts\DiscoveryResponse
     {
-        return \AngusDV\DiscoveryClient\Facades\Decorator::getDiscovererResponse()
+        return app()->make(\AngusDV\DiscoveryClient\Entities\Decorator::class)->getDiscoveryResponse()
             ->loadFromJson(Http::acceptJson()
                     ->get(config('client.service_discovery_address'))
                     ->body()

@@ -15,14 +15,14 @@ class ServiceRepository
 
     public function setServices($value): self
     {
-        Cache::put(static::SERVICE_KEY, $value, (new Registrar())->getTTL());
+        Cache::put(static::SERVICE_KEY, $value, app(Decorator::class)->getRegistrar()->getTTL());
         return $this;
     }
 
     public function getServices(): Collection
     {
         return Cache::get(static::SERVICE_KEY, function () {
-            $this->setServices((new ServiceDiscoverer())->discover()->getServices());
+            $this->setServices(app(Decorator::class)->getServiceDiscoverer()->discover()->getServices());
             return $this->getServices();
         });
     }

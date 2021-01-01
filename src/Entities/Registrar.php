@@ -25,11 +25,12 @@ class Registrar implements \AngusDV\DiscoveryClient\Contracts\Registrar
 
     public function build(Service $service): \AngusDV\DiscoveryClient\Contracts\RegistrarResponse
     {
-        return \AngusDV\DiscoveryClient\Facades\Decorator::getRegistrarResponse()->loadFromJson(Http::acceptJson()->post(config('client.service_discovery_address'), [
-            "name" => $service->getName(),
-            "host" => $service->getHost(),
-            "port" => $service->getPort()
-        ])->body());
+        return app(Decorator::class)->getRegistrarResponse()->loadFromJson(Http::acceptJson()
+            ->post(config('client.service_discovery_address'), [
+                "name" => $service->getName(),
+                "host" => $service->getHost(),
+                "port" => $service->getPort()
+            ])->body());
     }
 
     public function register(): self
@@ -42,8 +43,12 @@ class Registrar implements \AngusDV\DiscoveryClient\Contracts\Registrar
     public function forceRegister(): self
     {
         return $this->setTTL(
-            $this->build()
-                ->getTTL()
+            $this->build(new Service(
+                    config('client.service_name'),
+                    config('client.service_host'),
+                    config('client.service_port')
+                )
+            )->getTTL()
         )->setRegistration();
     }
 

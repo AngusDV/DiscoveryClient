@@ -4,6 +4,7 @@
 namespace AngusDV\DiscoveryClient\Entities;
 
 
+
 class Service
 {
 
@@ -50,5 +51,7 @@ class Service
     {
         return $this->port;
     }
+
+
 
 }

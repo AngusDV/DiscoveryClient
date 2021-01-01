@@ -13,11 +13,13 @@ class DiscoverCommand extends Command
     public function handle()
     {
         $this->comment("start discovering...");
-        $services = DiscoveryClient::discover()->getServices();
+        $services = DiscoveryClient::getServices();
         $this->info("{$services->count()} services discovered.");
         $this->table(
             ['Name', 'Host', 'Port'],
-            $services->toArray()
+            $services->map(function ($item){
+                return [$item->getName(),$item->getHost(),$item->getPort()];
+            })
         );
 
     }

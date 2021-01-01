@@ -5,6 +5,8 @@ namespace AngusDV\DiscoveryClient\Entities;
 
 
 
+use Illuminate\Support\Collection;
+
 class DiscoveryClient implements \AngusDV\DiscoveryClient\Contracts\DiscoveryClient
 {
     public Decorator $decorator;
@@ -34,9 +36,9 @@ class DiscoveryClient implements \AngusDV\DiscoveryClient\Contracts\DiscoveryCli
         return $this->getDecorator()->getRegistrar()->forceRegister();
     }
 
-    public function discover(): \AngusDV\DiscoveryClient\Contracts\DiscoveryResponse
+    public function getServices(): Collection
     {
-        return $this->getDecorator()->getServiceDiscoverer()->discover();
+        return $this->getDecorator()->getServiceRepository()->getServices();
     }
 
 }
