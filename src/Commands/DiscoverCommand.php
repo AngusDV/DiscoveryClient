@@ -2,25 +2,24 @@
 
 namespace AngusDV\DiscoveryClient\Commands;
 
-use AngusDV\DiscoveryClient\Facades\ServiceDiscoverer;
+use AngusDV\DiscoveryClient\Facades\DiscoveryClient;
 use Illuminate\Console\Command;
 
 class DiscoverCommand extends Command
 {
     protected $signature = 'client:discover';
-    protected $description = 'get all available services';
+    protected $description = 'Discover available services';
 
     public function handle()
     {
         $this->comment("start discovering...");
-        $services = ServiceDiscoverer::discover()->getServices()->count();
-        $this->info("$services services discovered.");
-        $services = ServiceDiscoverer::discover()->getServices();
+        $services = DiscoveryClient::getServices();
+        $this->info("{$services->count()} services discovered.");
         $this->table(
-            ['name', 'host', 'port'],
-            collect($services->map(function ($item, $key) {
-                return (array) $item;
-            }))
+            ['Name', 'Host', 'Port'],
+            $services->map(function ($item){
+                return [$item->getName(),$item->getHost(),$item->getPort()];
+            })
         );
 
     }

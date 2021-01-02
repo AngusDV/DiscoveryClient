@@ -13,33 +13,33 @@ class ServiceRepository
 {
     const SERVICE_KEY = "SERVICE_CACHE_KEY";
 
-    public function setServices($value):self
+    public function setServices($value): self
     {
-        Cache::put(static::SERVICE_KEY, $value, (new Presence())->getTTL());
+        Cache::put(static::SERVICE_KEY, $value, app(Decorator::class)->getRegistrar()->getTTL());
         return $this;
     }
 
-    public function getServices():Collection
+    public function getServices(): Collection
     {
         return Cache::get(static::SERVICE_KEY, function () {
-            $this->setServices(\AngusDV\DiscoveryClient\Facades\ServiceDiscoverer::discover()->getServices());
+            $this->setServices(app(Decorator::class)->getServiceDiscoverer()->discover()->getServices());
             return $this->getServices();
         });
     }
 
-    public function forgetServices():self
+    public function forgetServices(): self
     {
         Cache::forget(static::SERVICE_KEY);
         return $this;
     }
 
-    public function forceGetServices():Collection
+    public function forceGetServices(): Collection
     {
         return $this->forgetServices()->getServices();
     }
 
 
-    public function findOrFail($name):Service
+    public function findOrFail($name): Service
     {
         $service = $this->getServices()->where('name', $name)->first() ?: $this->forceGetServices()->where('name', $name)->first();
         throw_if(is_null($service), ServiceNotAvailable::class);

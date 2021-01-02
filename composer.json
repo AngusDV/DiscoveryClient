@@ -26,7 +26,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "AngusDV\\DiscoveryClient\\Providers\\DiscoveryClientServiceProvider"
+        "AngusDV\\DiscoveryClient\\DiscoveryClientServiceProvider"
       ]
     }
   }

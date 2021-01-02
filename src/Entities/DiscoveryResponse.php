@@ -4,9 +4,10 @@
 namespace AngusDV\DiscoveryClient\Entities;
 
 
+use AngusDV\DiscoveryClient\Exceptions\InvalidRegistrationResponse;
 use Illuminate\Support\Collection;
 
-class ServiceResponse implements \AngusDV\DiscoveryClient\Contracts\ServiceResponse
+class DiscoveryResponse implements \AngusDV\DiscoveryClient\Contracts\DiscoveryResponse
 {
 
     public Collection $services;
@@ -17,9 +18,16 @@ class ServiceResponse implements \AngusDV\DiscoveryClient\Contracts\ServiceRespo
         $this->services = collect();
     }
 
-    public function loadFromJson($data): \AngusDV\DiscoveryClient\Contracts\ServiceResponse
+    public function loadFromJson($data): \AngusDV\DiscoveryClient\Contracts\DiscoveryResponse
     {
-        return $this->setData(json_decode($data, true)['data']);
+        $json = json_decode($data, true);
+        throw_unless(isset($json['data']), InvalidRegistrationResponse::class);
+        return $this->setData($json['data']);
+    }
+
+    public function loadFromArray($data): \AngusDV\DiscoveryClient\Contracts\DiscoveryResponse
+    {
+        return $this->setData($data);
     }
 
     public function setData($data): self
