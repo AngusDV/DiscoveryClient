@@ -2,7 +2,7 @@
 
 namespace AngusDV\DiscoveryClient;
 
-use AngusDV\DiscoveryClient\Commands\DiscoverCommand;
+use AngusDV\DiscoveryClient\Commands\ServicesCommand;
 use AngusDV\DiscoveryClient\Commands\RegisterCommand;
 use AngusDV\DiscoveryClient\Entities\Decorator;
 use Illuminate\Support\ServiceProvider;
@@ -29,7 +29,7 @@ class DiscoveryClientServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->commands([
-                DiscoverCommand::class,
+                ServicesCommand::class,
                 RegisterCommand::class
             ]);
         }

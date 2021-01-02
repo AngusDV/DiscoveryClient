@@ -5,14 +5,14 @@ namespace AngusDV\DiscoveryClient\Commands;
 use AngusDV\DiscoveryClient\Facades\DiscoveryClient;
 use Illuminate\Console\Command;
 
-class DiscoverCommand extends Command
+class ServicesCommand extends Command
 {
-    protected $signature = 'client:discover';
-    protected $description = 'Discover available services';
+    protected $signature = 'client:services';
+    protected $description = 'Get available services';
 
     public function handle()
     {
-        $this->comment("start discovering...");
+        $this->comment("start getting...");
         $services = DiscoveryClient::getServices();
         $this->info("{$services->count()} services discovered.");
         $this->table(
