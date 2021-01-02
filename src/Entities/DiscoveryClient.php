@@ -41,4 +41,9 @@ class DiscoveryClient implements \AngusDV\DiscoveryClient\Contracts\DiscoveryCli
         return $this->getDecorator()->getServiceRepository()->getServices();
     }
 
+    public function findOrFail($name): Service
+    {
+        return $this->getDecorator()->getServiceRepository()->findOrFail($name);
+    }
+
 }
