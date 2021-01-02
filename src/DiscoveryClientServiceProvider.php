@@ -23,7 +23,7 @@ class DiscoveryClientServiceProvider extends ServiceProvider
             $this->app->configure('client');
         } else {
             $this->publishes([
-                __DIR__ . '/../config.php' => config_path('client.php'),
+                __DIR__ . '/config.php' => config_path('client.php'),
             ], 'client');
         }
 
@@ -42,6 +42,7 @@ class DiscoveryClientServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->mergeConfigFrom(__DIR__.'/config.php','client');
         $decorator = $this->createDecorator();
         $this->app->instance(Decorator::class, $decorator);
         $this->app->instance(DiscoveryClient::class, new \AngusDV\DiscoveryClient\Entities\DiscoveryClient($this->createDecorator()));
