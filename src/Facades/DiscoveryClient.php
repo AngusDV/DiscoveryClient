@@ -5,7 +5,6 @@ namespace AngusDV\DiscoveryClient\Facades;
 
 
 use AngusDV\DiscoveryClient\Entities\Decorator;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Facade;
 
 /**
@@ -13,7 +12,8 @@ use Illuminate\Support\Facades\Facade;
  * @method static void setDecorator(Decorator $decorator)
  * @method static \AngusDV\DiscoveryClient\Contracts\Registrar register()
  * @method static \AngusDV\DiscoveryClient\Contracts\Registrar forceRegister()
- * @method static Collection getServices()
+ * @method static \Illuminate\Support\Collection getServices()
+ * @method static \AngusDV\DiscoveryClient\Entities\Service findOrFail($name)
  * @see  AngusDV\DiscoveryClient\Contracts\DiscoveryClient
  */
 
