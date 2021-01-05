@@ -8,9 +8,9 @@ namespace AngusDV\DiscoveryClient\Entities;
 class Service
 {
 
-    protected string $name;
-    protected string $host;
-    protected string $port;
+    public string $name;
+    public string $host;
+    public string $port;
 
     public function __construct(string $name, string $host, string $port)
     {
